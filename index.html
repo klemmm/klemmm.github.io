@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Plop Test</title>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="HandheldFriendly" content="True" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <link rel="preload" as="style" href="/assets/built/screen.css?v=2aef46bacb" />
-    <link rel="preload" as="script" href="/assets/built/casper.js?v=2aef46bacb" />
+    <link rel="stylesheet" href="/assets/built/screen.css?v=83422d517f">
 
-    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css?v=2aef46bacb" />
+            <link rel="preload" as="image" href="https://static.ghost.org/v5.0.0/images/publication-cover.jpg">
+
+    <style>
+        :root {
+            --background-color: #ebebeb
+        }
+    </style>
+
+    <script>
+        /* The script for calculating the color contrast was taken from
+        https://gomakethings.com/dynamically-changing-the-text-color-based-on-background-color-contrast-with-vanilla-js/ */
+        var accentColor = getComputedStyle(document.documentElement).getPropertyValue('--background-color');
+        accentColor = accentColor.trim().slice(1);
+        var r = parseInt(accentColor.substr(0, 2), 16);
+        var g = parseInt(accentColor.substr(2, 2), 16);
+        var b = parseInt(accentColor.substr(4, 2), 16);
+        var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+        var textColor = (yiq >= 128) ? 'dark' : 'light';
+
+        document.documentElement.className = `has-${textColor}-text`;
+    </script>
 
     <meta name="description" content="Thoughts, stories and ideas.">
     <link rel="canonical" href="http://localhost:2368/">
@@ -130,177 +146,203 @@
     <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.5/umd/sodo-search.min.js" data-key="6d4781930e3370ea2a2bfd05a4" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.5/umd/main.css" data-sodo-search="http://localhost:2368/" data-locale="fr" crossorigin="anonymous"></script>
     
     <link href="http://localhost:2368/webmentions/receive/" rel="webmention">
-    <script defer src="/public/cards.min.js?v=2aef46bacb"></script>
-    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=2aef46bacb">
-    <script defer src="/public/member-attribution.min.js?v=2aef46bacb"></script><style>:root {--ghost-accent-color: #FF1A75;}</style>
-
+    <script defer src="/public/cards.min.js?v=83422d517f"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=83422d517f">
+    <script defer src="/public/member-attribution.min.js?v=83422d517f"></script><style>:root {--ghost-accent-color: #FF1A75;}</style>
 </head>
-<body class="home-template is-head-left-logo has-cover">
-<div class="viewport">
 
-    <header id="gh-head" class="gh-head outer">
-        <div class="gh-head-inner inner">
-            <div class="gh-head-brand">
-                <a class="gh-head-logo no-image" href="http://localhost:2368">
+<body class="home-template is-font-sans">
+<div class="gh-site">
+
+            
+<header id="gh-head" class="gh-head gh-outer is-head-left-logo is-head-transparent">
+    <div class="gh-head-inner">
+        <div class="gh-head-brand">
+            <div class="gh-head-brand-wrapper">
+                <a class="gh-head-logo" href="http://localhost:2368">
                         Plop Test
                 </a>
-                <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
-                <button class="gh-burger" aria-label="Main Menu"></button>
             </div>
+            <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <path d="M17.5 17.5L12.5 12.5L17.5 17.5ZM14.1667 8.33333C14.1667 9.09938 14.0158 9.85792 13.7226 10.5657C13.4295 11.2734 12.9998 11.9164 12.4581 12.4581C11.9164 12.9998 11.2734 13.4295 10.5657 13.7226C9.85792 14.0158 9.09938 14.1667 8.33333 14.1667C7.56729 14.1667 6.80875 14.0158 6.10101 13.7226C5.39328 13.4295 4.75022 12.9998 4.20854 12.4581C3.66687 11.9164 3.23719 11.2734 2.94404 10.5657C2.65088 9.85792 2.5 9.09938 2.5 8.33333C2.5 6.78624 3.11458 5.30251 4.20854 4.20854C5.30251 3.11458 6.78624 2.5 8.33333 2.5C9.88043 2.5 11.3642 3.11458 12.4581 4.20854C13.5521 5.30251 14.1667 6.78624 14.1667 8.33333Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
+</button>
+            <button class="gh-burger"></button>
+        </div>
 
-            <nav class="gh-head-menu">
-                <ul class="nav">
+        <nav class="gh-head-menu">
+            <ul class="nav">
     <li class="nav-home nav-current"><a href="http://localhost:2368/">Home</a></li>
     <li class="nav-about"><a href="http://localhost:2368/about/">About</a></li>
 </ul>
 
-            </nav>
+        </nav>
 
-            <div class="gh-head-actions">
-                    <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
-                    <div class="gh-head-members">
-                                <a class="gh-head-link" href="#/portal/signin" data-portal="signin">Sign in</a>
-                                <a class="gh-head-button" href="#/portal/signup" data-portal="signup">Subscribe</a>
-                    </div>
-            </div>
-        </div>
-    </header>
-
-    <div class="site-content">
-        
-<div class="site-header-content outer">
-
-            <img class="site-header-cover"
-                srcset="https://static.ghost.org/v5.0.0/images/publication-cover.jpg 300w,
-                        https://static.ghost.org/v5.0.0/images/publication-cover.jpg 600w,
-                        https://static.ghost.org/v5.0.0/images/publication-cover.jpg 1000w,
-                        https://static.ghost.org/v5.0.0/images/publication-cover.jpg 2000w"
-                sizes="100vw"
-                src="https://static.ghost.org/v5.0.0/images/publication-cover.jpg"
-                alt="Plop Test"
-            />
-
-        <div class="site-header-inner inner">
-                    <h1 class="site-title">Plop Test</h1>
-                <p class="site-description">Thoughts, stories and ideas.</p>
-        </div>
-
-</div>
-
-<main id="site-main" class="site-main outer">
-<div class="inner posts">
-
-    <div class="post-feed">
-            
-<article class="post-card post no-image post-card-large">
-
-
-    <div class="post-card-content">
-
-        <a class="post-card-content-link" href="/pouet/">
-            <header class="post-card-header">
-                <div class="post-card-tags">
+        <div class="gh-head-actions">
+                <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <path d="M17.5 17.5L12.5 12.5L17.5 17.5ZM14.1667 8.33333C14.1667 9.09938 14.0158 9.85792 13.7226 10.5657C13.4295 11.2734 12.9998 11.9164 12.4581 12.4581C11.9164 12.9998 11.2734 13.4295 10.5657 13.7226C9.85792 14.0158 9.09938 14.1667 8.33333 14.1667C7.56729 14.1667 6.80875 14.0158 6.10101 13.7226C5.39328 13.4295 4.75022 12.9998 4.20854 12.4581C3.66687 11.9164 3.23719 11.2734 2.94404 10.5657C2.65088 9.85792 2.5 9.09938 2.5 8.33333C2.5 6.78624 3.11458 5.30251 4.20854 4.20854C5.30251 3.11458 6.78624 2.5 8.33333 2.5C9.88043 2.5 11.3642 3.11458 12.4581 4.20854C13.5521 5.30251 14.1667 6.78624 14.1667 8.33333Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
+</button>
+                <div class="gh-head-members">
+                            <a class="gh-head-link" href="#/portal/signin" data-portal="signin">Sign in</a>
+                                <a class="gh-head-btn gh-btn gh-primary-btn" href="#/portal/signup" data-portal="signup">Subscribe</a>
                 </div>
-                <h2 class="post-card-title">
-                    pouet
-                </h2>
-            </header>
-                <div class="post-card-excerpt">coucou a va ?</div>
-        </a>
+        </div>
+    </div>
+</header>
 
-        <footer class="post-card-meta">
-            <time class="post-card-meta-date" datetime="2025-03-15">15 mars 2025</time>
-        </footer>
+    
+<main class="gh-main">
+    
+    <section class="gh-header gh-outer has-background-image">
+    <div class="gh-header-inner gh-inner">
+
+                <img class="gh-header-image" src="https://static.ghost.org/v5.0.0/images/publication-cover.jpg" alt="Plop Test">
+
+        <div class="gh-header-content">
+                <h1 class="gh-header-primary">A weekly podcast about creativity, design, and building the things we love.</h1>
+                <p class="gh-header-secondary">Subscribe below to never miss an episode.</p>
+        </div>
 
     </div>
+</section>    <div class="gh-podcast-service-list gh-outer">
+        <a href="https://podcasts.apple.com/" target="_blank" rel="noopener noreferrer">
+            <svg version="1.1" id="Livello_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
+<g id="XMLID_632_">
+	<linearGradient id="XMLID_2_" gradientUnits="userSpaceOnUse" x1="150" y1="0" x2="150" y2="300">
+		<stop  offset="0" style="stop-color:#F452FF"/>
+		<stop  offset="1" style="stop-color:#832BC1"/>
+	</linearGradient>
+	<path id="XMLID_662_" fill-rule="evenodd" clip-rule="evenodd" fill="url(#XMLID_2_)" d="M294.1,260c-2.9,7.4-9.6,17.8-19.2,25.2
+		c-5.5,4.2-12.1,8.3-21.1,11c-9.6,2.9-21.5,3.8-36.3,3.8h-135c-14.8,0-26.6-1-36.3-3.8c-9-2.7-15.6-6.7-21.1-11
+		c-9.5-7.3-16.3-17.8-19.2-25.2C0.1,245.1,0,228.2,0,217.5l0,0v-135l0,0C0,71.8,0.1,54.9,5.9,40c2.9-7.4,9.6-17.8,19.2-25.2
+		c5.5-4.2,12.1-8.3,21.1-11C55.9,1,67.7,0,82.5,0l0,0h135l0,0c14.8,0,26.6,1,36.3,3.8c9,2.7,15.6,6.7,21.1,11
+		c9.5,7.3,16.3,17.8,19.2,25.2c5.9,14.9,5.9,31.9,5.9,42.5v135C300,228.2,299.9,245.1,294.1,260z"/>
+	<g>
+		<path id="XMLID_657_" fill="#FFFFFF" d="M175.7,181.1c-0.4-3.6-1.6-6.2-4-8.6c-4.5-4.7-12.4-7.8-21.7-7.8c-9.3,0-17.2,3-21.7,7.8
+			c-2.3,2.5-3.6,5-4,8.6c-0.8,7-0.3,13,0.5,22.7c0.8,9.2,2.3,21.5,4.2,33.9c1.4,8.9,2.5,13.7,3.5,17.1c1.7,5.6,7.8,10.4,17.5,10.4
+			c9.7,0,15.9-4.9,17.5-10.4c1-3.4,2.1-8.2,3.5-17.1c1.9-12.5,3.4-24.7,4.2-33.9C176.1,194.1,176.5,188.1,175.7,181.1z"/>
+		<path id="XMLID_655_" fill="#FFFFFF" d="M174.6,130.1c0,13.6-11,24.6-24.6,24.6s-24.6-11-24.6-24.6c0-13.6,11-24.6,24.6-24.6
+			S174.6,116.6,174.6,130.1z"/>
+		<path id="XMLID_653_" fill="#FFFFFF" d="M149.7,33.2C92.3,33.4,45.3,80,44.5,137.4c-0.6,46.5,29.1,86.3,70.6,100.9
+			c1,0.4,2-0.5,1.9-1.5c-0.5-3.6-1.1-7.2-1.5-10.8c-0.2-1.3-1-2.3-2.1-2.9c-32.8-14.3-55.7-47.2-55.3-85.3
+			c0.5-50,41.3-90.7,91.2-91.1c51.1-0.4,92.8,41,92.8,92c0,37.7-22.8,70.1-55.3,84.4c-1.2,0.5-2,1.6-2.1,2.9
+			c-0.5,3.6-1,7.2-1.5,10.8c-0.2,1.1,0.9,1.9,1.9,1.5c41.1-14.4,70.6-53.6,70.6-99.6C255.5,80.5,208,33.1,149.7,33.2z"/>
+		<path id="XMLID_651_" fill="#FFFFFF" d="M147.3,68.2c-37.4,1.4-67.4,32.3-67.9,69.7c-0.3,24.6,12,46.4,30.9,59.3
+			c0.9,0.6,2.2-0.1,2.2-1.2c-0.3-4.3-0.3-8.1-0.1-12.1c0.1-1.3-0.4-2.5-1.4-3.4c-11.5-10.8-18.5-26.2-18.1-43.2
+			c0.8-30,24.9-54.4,54.9-55.6c32.6-1.3,59.4,24.9,59.4,57.1c0,16.4-7,31.2-18.1,41.7c-0.9,0.9-1.4,2.1-1.4,3.4
+			c0.2,3.9,0.1,7.7-0.1,12c-0.1,1.1,1.2,1.9,2.2,1.2c18.6-12.7,30.9-34.2,30.9-58.4C220.8,98.9,187.5,66.6,147.3,68.2z"/>
+	</g>
+</g>
+</svg>            <span>Listen on</span>
+            <span>Apple Podcasts</span>
+        </a>
+        <a href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168">
+    <path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/>
+</svg>            <span>Listen on</span>
+            <span>Spotify</span>
+        </a>
+        <a href="https://music.youtube.com/" target="_blank" rel="noopener noreferrer">
+            <svg width="176" height="176" viewBox="0 0 176 176" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_3_2)">
+<path d="M88 176C136.601 176 176 136.601 176 88C176 39.3989 136.601 0 88 0C39.3989 0 0 39.3989 0 88C0 136.601 39.3989 176 88 176Z" fill="#FF0000"/>
+<path d="M88 46C111.1 46 130 64.8 130 88C130 111.2 111.2 130 88 130C64.8 130 46 111.2 46 88C46 64.8 64.9 46 88 46ZM88 42C62.6 42 42 62.6 42 88C42 113.4 62.6 134 88 134C113.4 134 134 113.4 134 88C134 62.6 113.4 42 88 42Z" fill="white"/>
+<path d="M72 111L111 87L72 65V111Z" fill="white"/>
+</g>
+<defs>
+<clipPath id="clip0_3_2">
+<rect width="176" height="176" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+            <span>Listen on</span>
+            <span>YouTube Music</span>
+        </a>
+</div>    <section class="gh-archive gh-outer">
+        <div class="gh-archive-inner gh-inner">
+            <header class="gh-archive-header">
+                <h1 class="gh-archive-title">Latest episodes</h1>
+            </header>
+        </div>
+    </section>
+    
+<div class="gh-list simple gh-outer" data-column="">
+    <div class="gh-list-inner gh-inner">
 
-</article>
-            
-<article class="post-card post tag-news dynamic">
-
-    <a class="post-card-image-link" href="/coming-soon/">
-
-        <img class="post-card-image"
-            srcset="https://static.ghost.org/v4.0.0/images/feature-image.jpg 300w,
-                    https://static.ghost.org/v4.0.0/images/feature-image.jpg 600w,
-                    https://static.ghost.org/v4.0.0/images/feature-image.jpg 1000w,
-                    https://static.ghost.org/v4.0.0/images/feature-image.jpg 2000w"
-            sizes="(max-width: 1000px) 400px, 800px"
-            src="https://static.ghost.org/v4.0.0/images/feature-image.jpg"
-            alt="Coming soon"
-            loading="lazy"
-        />
 
 
+            <div class="gh-list-feed">
+                            <article class="gh-list-item post no-image">
+    <a class="gh-list-item-inner" href="/pouet/">
+        <div class="gh-list-item-content">
+
+            <h3 class="gh-list-item-title">pouet</h3>
+
+                <p class="gh-list-item-excerpt">coucou a va ?</p>
+
+
+                <span class="gh-list-item-published-at">15 mars 2025</span>
+        </div>
     </a>
+</article>                            <article class="gh-list-item post tag-news">
+    <a class="gh-list-item-inner" href="/coming-soon/">
+            <figure class="gh-list-item-image">
+                <img
+                    srcset="https://static.ghost.org/v4.0.0/images/feature-image.jpg 300w,
+                            https://static.ghost.org/v4.0.0/images/feature-image.jpg 720w,
+                            https://static.ghost.org/v4.0.0/images/feature-image.jpg 960w,
+                            https://static.ghost.org/v4.0.0/images/feature-image.jpg 1200w,
+                            https://static.ghost.org/v4.0.0/images/feature-image.jpg 2000w"
+                    sizes="(max-width: 1200px) 100vw, 1200px"
+                    src="https://static.ghost.org/v4.0.0/images/feature-image.jpg"
+                    alt="Coming soon"
+                >
+            </figure>
+        <div class="gh-list-item-content">
 
-    <div class="post-card-content">
+            <h3 class="gh-list-item-title">Coming soon</h3>
 
-        <a class="post-card-content-link" href="/coming-soon/">
-            <header class="post-card-header">
-                <div class="post-card-tags">
-                        <span class="post-card-primary-tag">News</span>
-                </div>
-                <h2 class="post-card-title">
-                    Coming soon
-                </h2>
-            </header>
-                <div class="post-card-excerpt">This is Plop Test, a brand new site by klemm that&#39;s just getting started. Things will be up and running here shortly, but you can subscribe in the meantime if you&#39;d like to stay up to date and receive emails when new content is published!</div>
-        </a>
+                <p class="gh-list-item-excerpt">This is Plop Test, a brand new site by klemm that&#39;s just getting started. Things will be up and running here shortly, but you can subscribe in the meantime if you&#39;d like to stay up to date and receive emails when new content is published!</p>
 
-        <footer class="post-card-meta">
-            <time class="post-card-meta-date" datetime="2025-03-15">15 mars 2025</time>
-        </footer>
+
+                <span class="gh-list-item-published-at">15 mars 2025</span>
+        </div>
+    </a>
+</article>            </div>
 
     </div>
-
-</article>
-    </div>
-
-    <nav class="pagination">
-    <span class="page-number">Page 1 of 1</span>
-</nav>
-
-
 </div>
+            <section class="gh-cta gh-outer">
+            <div class="gh-cta-inner gh-inner">
+                    <h2 class="gh-cta-title">Get the latest episodes directly in your inbox</h2>
+                <button class="gh-cta-input" data-portal>jamie@example.com <span>Subscribe</span></button>
+            </div>
+        </section>
 </main>
 
-    </div>
-
-    <footer class="site-footer outer">
-        <div class="inner">
-            <section class="copyright"><a href="http://localhost:2368">Plop Test</a> &copy; 2025</section>
-            <nav class="site-footer-nav">
-                <ul class="nav">
+    
+<footer class="gh-foot gh-outer">
+    <div class="gh-foot-inner gh-inner">
+        <nav class="gh-foot-menu">
+            <ul class="nav">
     <li class="nav-sign-up nav-current"><a href="#/portal/">Sign up</a></li>
 </ul>
 
-            </nav>
-            <div class="gh-powered-by"><a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a></div>
-        </div>
-    </footer>
+        </nav>
 
+        <div class="gh-copyright">
+                Plop Test &copy; 2025. Powered by <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
+        </div>
+    </div>
+</footer>
 </div>
 
 
-<script
-    src="https://code.jquery.com/jquery-3.5.1.min.js"
-    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-    crossorigin="anonymous">
-</script>
-<script src="/assets/built/casper.js?v=2aef46bacb"></script>
-<script>
-$(document).ready(function () {
-    // Mobile Menu Trigger
-    $('.gh-burger').click(function () {
-        $('body').toggleClass('gh-head-open');
-    });
-    // FitVids - Makes video embeds responsive
-    $(".gh-content").fitVids();
-});
-</script>
+<script src="/assets/built/main.min.js?v=83422d517f"></script>
 
 
 
 </body>
+
 </html>
